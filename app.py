@@ -6,6 +6,8 @@ from model import db, Todoitem
 from addItemForm import AddItemForm
 from deleteItemForm import DeleteItemForm
 
+#hallo
+
 app = Flask(__name__)
 app.secret_key = "VerySecretSecretKey"
 
