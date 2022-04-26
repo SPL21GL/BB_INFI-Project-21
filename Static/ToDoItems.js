@@ -1,24 +1,18 @@
-function deleteItem(button)
-{
+function deleteProduct(element) {
     if(window.confirm("Wollen Sie das Item wirklich löschen"))
     {
-        button.form.submit();
+        element.parentElement.submit();
     }
 }
 
-function showAllToasts()
-{
-    let toastElList = [].slice.call(document.querySelectorAll('.toast'));
-    let toastList = toastElList.map(function (toastEl) {
-        return new bootstrap.Toast(toastEl);
-    });
-    
-    //for of schleife hier
-    for (let toast of toastList)
+function deleteOrder(element) {
+    if(window.confirm("Wollen Sie das Item wirklich löschen"))
     {
-        toast.show();
+        element.parentElement.submit();
     }
 }
 
-//funktion hier aufrufen
-showAllToasts();
+
+/*
+document.querySelector("a[href='/products']").classList.add("active")
+*/
