@@ -11,6 +11,15 @@ create table if not exists Auto (
 );
 
 
+create table if not exists 	Kategorie (
+	KategorieId int auto_increment unique key primary key,
+	Kategoriename varchar (120) ,
+    Preis int (32) ,
+    Videoueberwachung int (32) ,
+    Versicherung varchar (120) ,
+    Farbe varchar (120) 
+);
+
 create table if not exists Stellplatz (
 	StellplatzId int auto_increment unique key primary key,
     KategorieId int (40),
@@ -23,14 +32,6 @@ create table if not exists Stellplatz (
 
 
 
-create table if not exists 	Kategorie (
-	KategorieId int auto_increment unique key primary key,
-	Kategoriename varchar (120) ,
-    Preis int (32) ,
-    Videoueberwachung int (32) ,
-    Versicherung varchar (120) ,
-    Farbe varchar (120) 
-);
 
 create table if not exists besetzt (
 	besetztId int auto_increment unique key primary key,
