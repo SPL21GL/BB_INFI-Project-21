@@ -1,0 +1,31 @@
+{%extends 'base.html'%}
+
+{%block body%}
+
+
+
+<h2>All besetzten</h2>
+
+<table class="besetzten">
+  <thead>
+    <tr>
+      <th scope="col">Anfangszeitpunkt</th>
+      <th scope="col">Endzeitpunkt</th>
+      
+
+    </tr>
+  </thead>
+  <tbody>
+
+    {% for besetzten in besetzten %}
+    <tr>
+        <td>{{besetzten.besetztenAnfangszeitpunkt}}</td>
+        <td>{{besetzten.besetztenEndzeitpunkt}}</td>
+       
+        <td>
+
+
+  </tbody>
+</table>
+
+{%endblock%}

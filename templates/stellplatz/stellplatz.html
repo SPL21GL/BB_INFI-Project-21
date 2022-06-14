@@ -9,12 +9,12 @@
 <table class="Stellplatz">
   <thead>
     <tr>
+      <th scope="col">Kategorie</th>
       <th scope="col">Qualitaet</th>
       <th scope="col">Laenge</th>
       <th scope="col">Breite</th>
       <th scope="col">Hoehe</th>
-      <th scope="col">Stellplatznummer</th>
-      <th scope="col">Stellplatzgruppe</th>
+      
    
     </tr>
   </thead>
@@ -22,12 +22,12 @@
 
     {% for Stellplatz in Stellplatz %}
     <tr>
+        <td>{{stellplatz.stellplatzKategorie}}</td>
         <td>{{stellplatz.stellplatzQualitaet}}</td>
         <td>{{stellplatz.stellplatzLeange}}</td>
         <td>{{stellplatz.stellplatzBreite}}</td>
         <td>{{stellplatz.stellplatzHoehe}}</td>
-        <td>{{stellplatz.stellplatzStellplatznummer}}</td>
-        <td>{{stellplatz.stellplatzStellplatzgruppe}}</td>
+        
         
 
         <td>

@@ -10,8 +10,6 @@ class Auto(db.Model):
     __tablename__ = 'auto'
 
     AutoId = db.Column(db.Integer, primary_key=True, unique=True)
-    Marke = db.Column(db.String(120))
-    Farbe = db.Column(db.String(120))
     Kategorie = db.Column(db.String(120))
     Kennzeichen = db.Column(db.String(120))
     Laenge = db.Column(db.String(120))
@@ -29,16 +27,13 @@ class Besetzt(db.Model):
     Anfangszeitpunkt = db.Column(db.DateTime)
     Endzeitpunkt = db.Column(db.DateTime)
 
-    auto = db.relationship('Auto', primaryjoin='Besetzt.AutoId == Auto.AutoId', backref='besetzts')
-    stellplatz = db.relationship('Stellplatz', primaryjoin='Besetzt.StellplatzId == Stellplatz.StellplatzId', backref='besetzts')
-
 
 
 class Kategorie(db.Model):
     __tablename__ = 'kategorie'
 
     KategorieId = db.Column(db.Integer, primary_key=True, unique=True)
-    Name = db.Column(db.String(120))
+    Kategoriename = db.Column(db.String(120))
     Preis = db.Column(db.Integer)
     Videoueberwachung = db.Column(db.Integer)
     Versicherung = db.Column(db.String(120))
@@ -51,6 +46,7 @@ class Stellplatz(db.Model):
 
     StellplatzId = db.Column(db.Integer, primary_key=True, unique=True)
     KategorieId = db.Column(db.ForeignKey('kategorie.KategorieId'), index=True)
+    Kategorie = db.Column(db.String(120))
     Qualitaet = db.Column(db.String(120))
     Laenge = db.Column(db.String(120))
     Breite = db.Column(db.String(120))
@@ -58,4 +54,3 @@ class Stellplatz(db.Model):
     Stellplatzgruppe = db.Column(db.String(120))
     
 
-    kategorie = db.relationship('Kategorie', primaryjoin='Stellplatz.KategorieId == Kategorie.KategorieId', backref='stellplatzzes')
