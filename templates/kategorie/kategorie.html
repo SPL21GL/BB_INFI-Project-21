@@ -1,0 +1,36 @@
+{%extends 'base.html'%}
+
+{%block body%}
+
+
+
+<h2>All Kategorie</h2>
+
+<table class="kategorie">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Preis</th>
+      <th scope="col">Videoüberwachung</th>
+      <th scope="col">Versicherung</th>
+      <th scope="col">Farbe</th>
+
+    </tr>
+  </thead>
+  <tbody>
+
+    {% for kategorie in kategorie %}
+    <tr>
+        <td>{{kategorie.kategorieName}}</td>
+        <td>{{kategorie.kategoriePreis}}</td>
+        <td>{{kategorie.kategorieVideoüberwachung}}</td>
+        <td>{{kategorie.kategorieVersicherung}}</td>
+        <td>{{kategorie.kategorieFarbe}}</td>
+
+        <td>
+
+
+  </tbody>
+</table>
+
+{%endblock%}

@@ -10,6 +10,8 @@ class Auto(db.Model):
     __tablename__ = 'auto'
 
     AutoId = db.Column(db.Integer, primary_key=True, unique=True)
+    Marke = db.Column(db.String(120))
+    Farbe = db.Column(db.String(120))
     Kategorie = db.Column(db.String(120))
     Kennzeichen = db.Column(db.String(120))
     Laenge = db.Column(db.String(120))
@@ -36,7 +38,7 @@ class Kategorie(db.Model):
     __tablename__ = 'kategorie'
 
     KategorieId = db.Column(db.Integer, primary_key=True, unique=True)
-    Kategoriename = db.Column(db.String(120))
+    Name = db.Column(db.String(120))
     Preis = db.Column(db.Integer)
     Videoueberwachung = db.Column(db.Integer)
     Versicherung = db.Column(db.String(120))
@@ -52,6 +54,8 @@ class Stellplatz(db.Model):
     Qualitaet = db.Column(db.String(120))
     Laenge = db.Column(db.String(120))
     Breite = db.Column(db.String(120))
-    Hoehe = db.Column(db.String(120))
+    Stellplatznummer = db.Column(db.String(120))
+    Stellplatzgruppe = db.Column(db.String(120))
+    
 
     kategorie = db.relationship('Kategorie', primaryjoin='Stellplatz.KategorieId == Kategorie.KategorieId', backref='stellplatzzes')
