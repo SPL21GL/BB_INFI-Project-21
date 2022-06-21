@@ -22,7 +22,7 @@ class Besetzt(db.Model):
     __tablename__ = 'besetzt'
 
     besetztId = db.Column(db.Integer, primary_key=True, unique=True)
-    AutoId = db.Column(db.ForeignKey('auto.AutoId'), index=True)
+    AutoId = db.Column(db.ForeignKey('autos.AutoId'), index=True)
     StellplatzId = db.Column(db.ForeignKey('stellplatz.StellplatzId'), index=True)
     Anfangszeitpunkt = db.Column(db.DateTime)
     Endzeitpunkt = db.Column(db.DateTime)
@@ -46,11 +46,9 @@ class Stellplatz(db.Model):
 
     StellplatzId = db.Column(db.Integer, primary_key=True, unique=True)
     KategorieId = db.Column(db.ForeignKey('kategorie.KategorieId'), index=True)
-    Kategorie = db.Column(db.String(120))
     Qualitaet = db.Column(db.String(120))
     Laenge = db.Column(db.String(120))
     Breite = db.Column(db.String(120))
-    Stellplatznummer = db.Column(db.String(120))
-    Stellplatzgruppe = db.Column(db.String(120))
+    Hoehe = db.Column(db.String(120))
     
 

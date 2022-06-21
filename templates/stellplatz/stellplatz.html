@@ -3,37 +3,68 @@
 {%block body%}
 
 
-
-<h2>All Stellplatz</h2>
-
-<table class="Stellplatz">
-  <thead>
+<table class="table">
+    <thead>
     <tr>
-      <th scope="col">Kategorie</th>
-      <th scope="col">Qualitaet</th>
-      <th scope="col">Laenge</th>
-      <th scope="col">Breite</th>
-      <th scope="col">Hoehe</th>
-      
-   
+        <th scope="col">KategorieId</th>
+        <th scope="col">Qualitaet</th>
+        <th scope="col">Laenge</th>
+        <th scope="col">Breite</th>
+        <th scope="col">Höhe</th>
+
     </tr>
-  </thead>
-  <tbody>
+    </thead>
+    <tbody>
 
-    {% for Stellplatz in Stellplatz %}
+    {% for stellplatz in stellplaetze.items %}
     <tr>
-        <td>{{stellplatz.stellplatzKategorie}}</td>
-        <td>{{stellplatz.stellplatzQualitaet}}</td>
-        <td>{{stellplatz.stellplatzLeange}}</td>
-        <td>{{stellplatz.stellplatzBreite}}</td>
-        <td>{{stellplatz.stellplatzHoehe}}</td>
-        
-        
-
+        <td>{{stellplatz.KategorieId}}</td>
+        <td>{{stellplatz.Qualitaet}}</td>
+        <td>{{stellplatz.Laenge}}</td>
+        <td>{{stellplatz.Breite}}</td>
+        <td>{{stellplatz.Hoehe}}</td>
         <td>
+            <a class="btn btn-success" href="/stellplatz/stellplatz_edit?StellplatzId={{stellplatz.StellplatzId}}">✏️</a>
+            <form action="/stellplatz/delete_stellplatz" method="post" style="display: inline;">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                <input type="hidden" name="StellplatzId" id="StellplatzId" value="{{stellplatz.StellplatzId}}">
+                <button class="btn btn-danger" onclick="delete_stellplatz(this); return false;">🗑️</button>
 
-
-  </tbody>
+            </form>
+        </td>
+    </tr>
+    {% endfor %}
+    </tbody>
 </table>
+
+
+<div id="data-navigation">
+    <a href="{{ url_for('stellplatz_blueprint.stellplatz', page=1) }}"
+       class="btn btn-outline-secondary
+           {% if stellplaetze.page == 1 %}disabled{% endif %}">
+        &laquo;&laquo;
+    </a>
+    <a href="{{ url_for('stellplatz_blueprint.stellplatz', page=stellplaetze.prev_num) }}"
+       class="btn btn-outline-secondary
+           {% if stellplaetze.page == 1 %}disabled{% endif %}">
+        &laquo;
+    </a>
+    <a class="btn btn-secondary">
+        {{ stellplaetze.page }}
+    </a>
+
+    <a href="{{ url_for('stellplatz_blueprint.stellplatz', page=stellplaetze.next_num) }}"
+       class="btn btn-outline-secondary
+           {% if stellplaetze.page == stellplaetze.pages or stellplaetze.pages == 0 %}disabled{% endif %}">
+        &raquo;
+    </a>
+    <a href="{{ url_for('stellplatz_blueprint.stellplatz', page=stellplaetze.pages) }}"
+       class="btn btn-outline-secondary
+           {% if stellplaetze.page == stellplaetze.pages or stellplaetze.pages == 0%}disabled{% endif %}">
+        &raquo;&raquo;
+    </a>
+</div>
+
+
 
 {%endblock%}

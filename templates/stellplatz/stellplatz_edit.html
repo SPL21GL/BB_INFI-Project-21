@@ -1,0 +1,44 @@
+{%extends 'base.html'%}
+
+{%block body%}
+
+<form method="post">
+    {{form.csrf_token}}
+
+    <!-- {{ form.errors }} -->
+
+    <div class="mb-3">
+        <label for="StellplatzId" class="form-label"></label>
+        {{form.StellplatzId(class_="form-control",readonly=True)}}
+    </div>
+
+    <div class="mb-3">
+        <label for="KategorieId" class="form-label">KategorieId</label>
+        {{form.KategorieId(class_="form-control")}}
+    </div>
+
+    <div class="mb-3">
+        <label for="Qualitaet" class="form-label">Qualitaet</label>
+        {{form.Qualitaet(class_="form-control")}}
+    </div>
+
+    <div class="mb-3">
+        <label for="Laenge" class="form-label">Laenge</label>
+        {{form.Laenge(class_="form-control")}}
+    </div>
+
+    <div class="mb-3">
+        <label for="Breite" class="form-label">Breite</label>
+        {{form.Breite(class_="form-control")}}
+    </div>
+
+    <div class="mb-3">
+        <label for="Hoehe" class="form-label">Höhe</label>
+        {{form.Hoehe(class_="form-control")}}
+    </div>
+
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+{%endblock%}

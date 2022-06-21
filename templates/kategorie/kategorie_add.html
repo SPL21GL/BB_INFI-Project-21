@@ -1,0 +1,38 @@
+{%extends 'base.html'%}
+
+{%block body%}
+
+<form method="post">
+    {{form.csrf_token}}
+
+    <!-- {{ form.errors }} -->
+
+    <div class="mb-3">
+        <label for="Kategoriename" class="form-label">Kategoriename</label>
+        {{form.Kategoriename(class_="form-control")}}
+    </div>
+
+    <div class="mb-3">
+        <label for="Preis" class="form-label">Preis</label>
+        {{form.Preis(class_="form-control")}}
+    </div>
+
+    <div class="mb-3">
+        <label for="Videoueberwachung" class="form-label">Videoueberwachung</label>
+        {{form.Videoueberwachung(class_="form-control")}}
+    </div>
+
+    <div class="mb-3">
+        <label for="Versicherung" class="form-label">Versicherung</label>
+        {{form.Versicherung(class_="form-control")}}
+    </div>
+
+    <div class="mb-3">
+        <label for="Farbe" class="form-label">Farbe</label>
+        {{form.Farbe(class_="form-control")}}
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+{%endblock%}

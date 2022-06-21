@@ -3,34 +3,68 @@
 {%block body%}
 
 
-
-<h2>All Kategorie</h2>
-
-<table class="kategorie">
-  <thead>
+<table class="table">
+    <thead>
     <tr>
-      <th scope="col">Kategoriename</th>
-      <th scope="col">Preis</th>
-      <th scope="col">Videoüberwachung</th>
-      <th scope="col">Versicherung</th>
-      <th scope="col">Farbe</th>
+        <th scope="col">Kategoriename</th>
+        <th scope="col">Preis</th>
+        <th scope="col">Videoueberwachung</th>
+        <th scope="col">Versicherung</th>
+        <th scope="col">Farbe</th>
 
     </tr>
-  </thead>
-  <tbody>
+    </thead>
+    <tbody>
 
-    {% for kategorie in kategorie %}
+    {% for kategorie in kategories.items %}
     <tr>
-        <td>{{kategorie.kategorieName}}</td>
-        <td>{{kategorie.kategoriePreis}}</td>
-        <td>{{kategorie.kategorieVideoüberwachung}}</td>
-        <td>{{kategorie.kategorieVersicherung}}</td>
-        <td>{{kategorie.kategorieFarbe}}</td>
-
+        <td>{{kategorie.Kategoriename}}</td>
+        <td>{{kategorie.Preis}}</td>
+        <td>{{kategorie.Videoueberwachung}}</td>
+        <td>{{kategorie.Versicherung}}</td>
+        <td>{{kategorie.Farbe}}</td>
         <td>
+            <a class="btn btn-success" href="/kategorie/kategorie_edit?KategorieId={{kategorie.KategorieId}}">✏️</a>
+            <form action="/kategorie/delete_kategorie" method="post" style="display: inline;">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                <input type="hidden" name="KategorieId" id="KategorieId" value="{{kategorie.KategorieId}}">
+                <button class="btn btn-danger" onclick="delete_auto(this); return false;">🗑️</button>
 
-
-  </tbody>
+            </form>
+        </td>
+    </tr>
+    {% endfor %}
+    </tbody>
 </table>
+
+
+<div id="data-navigation">
+    <a href="{{ url_for('kategorie_blueprint.kategorie', page=1) }}"
+       class="btn btn-outline-secondary
+           {% if kategories.page == 1 %}disabled{% endif %}">
+        &laquo;&laquo;
+    </a>
+    <a href="{{ url_for('kategorie_blueprint.kategorie', page=kategories.prev_num) }}"
+       class="btn btn-outline-secondary
+           {% if kategories.page == 1 %}disabled{% endif %}">
+        &laquo;
+    </a>
+    <a class="btn btn-secondary">
+        {{ kategories.page }}
+    </a>
+
+    <a href="{{ url_for('kategorie_blueprint.kategorie', page=kategories.next_num) }}"
+       class="btn btn-outline-secondary
+           {% if kategories.page == kategories.pages or kategories.pages == 0 %}disabled{% endif %}">
+        &raquo;
+    </a>
+    <a href="{{ url_for('kategorie_blueprint.kategorie', page=kategories.pages) }}"
+       class="btn btn-outline-secondary
+           {% if kategories.page == kategories.pages or kategories.pages == 0%}disabled{% endif %}">
+        &raquo;&raquo;
+    </a>
+</div>
+
+
 
 {%endblock%}

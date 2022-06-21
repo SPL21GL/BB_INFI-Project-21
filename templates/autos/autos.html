@@ -1,0 +1,70 @@
+{%extends 'base.html'%}
+
+{%block body%}
+
+
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">Kategorie</th>
+        <th scope="col">Kennzeichen</th>
+        <th scope="col">Laenge</th>
+        <th scope="col">Breite</th>
+        <th scope="col">Hoehe</th>
+
+    </tr>
+    </thead>
+    <tbody>
+
+    {% for auto in autos.items %}
+    <tr>
+        <td>{{auto.Kategorie}}</td>
+        <td>{{auto.Kennzeichen}}</td>
+        <td>{{auto.Laenge}}</td>
+        <td>{{auto.Breite}}</td>
+        <td>{{auto.Hoehe}}</td>
+        <td>
+            <a class="btn btn-success" href="/autos/auto_edit?AutoId={{auto.AutoId}}">✏️</a>
+            <form action="/autos/delete_auto" method="post" style="display: inline;">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                <input type="hidden" name="AutoId" id="AutoId" value="{{auto.AutoId}}">
+                <button class="btn btn-danger" onclick="delete_auto(this); return false;">🗑️</button>
+
+            </form>
+        </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+
+<div id="data-navigation">
+    <a href="{{ url_for('autos_blueprint.autos', page=1) }}"
+       class="btn btn-outline-secondary
+           {% if autos.page == 1 %}disabled{% endif %}">
+        &laquo;&laquo;
+    </a>
+    <a href="{{ url_for('autos_blueprint.autos', page=autos.prev_num) }}"
+       class="btn btn-outline-secondary
+           {% if autos.page == 1 %}disabled{% endif %}">
+        &laquo;
+    </a>
+    <a class="btn btn-secondary">
+        {{ autos.page }}
+    </a>
+
+    <a href="{{ url_for('autos_blueprint.autos', page=autos.next_num) }}"
+       class="btn btn-outline-secondary
+           {% if autos.page == autos.pages or autos.pages == 0 %}disabled{% endif %}">
+        &raquo;
+    </a>
+    <a href="{{ url_for('autos_blueprint.autos', page=autos.pages) }}"
+       class="btn btn-outline-secondary
+           {% if autos.page == autos.pages or autos.pages == 0%}disabled{% endif %}">
+        &raquo;&raquo;
+    </a>
+</div>
+
+
+
+{%endblock%}

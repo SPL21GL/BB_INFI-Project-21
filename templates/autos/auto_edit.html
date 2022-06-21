@@ -8,13 +8,18 @@
     <!-- {{ form.errors }} -->
 
     <div class="mb-3">
-        <label for="KategorieId" class="form-label">KategorieId</label>
-        {{form.KategorieId(class_="form-control")}}
+        <label for="AutoId" class="form-label"></label>
+        {{form.AutoId(class_="form-control",readonly=True)}}
     </div>
 
     <div class="mb-3">
-        <label for="Qualitaet" class="form-label">Qualitaet</label>
-        {{form.Qualitaet(class_="form-control")}}
+        <label for="Kategorie" class="form-label">Kategorie</label>
+        {{form.Kategorie(class_="form-control")}}
+    </div>
+
+    <div class="mb-3">
+        <label for="Kennzeichen" class="form-label">Kennzeichen</label>
+        {{form.Kennzeichen(class_="form-control")}}
     </div>
 
     <div class="mb-3">
@@ -28,11 +33,9 @@
     </div>
 
     <div class="mb-3">
-        <label for="Hoehe" class="form-label">Höhe</label>
+        <label for="Hoehe" class="form-label">Hoehe</label>
         {{form.Hoehe(class_="form-control")}}
     </div>
-
-
 
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>
